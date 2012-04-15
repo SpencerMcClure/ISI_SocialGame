@@ -1,7 +1,7 @@
 package com.front.client;
 
-import isi.prototype.back.Jammer;
-import isi.prototype.back.Node;
+
+
 import com.front.client.GameObject.Class;
 
 import java.util.ArrayList;
@@ -35,6 +35,10 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import isi.prototype.back.Jammer;
+import isi.prototype.back.Node;
+import isi.prototype.back.World;
+import isi.prototype.back.*;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -71,6 +75,8 @@ public class ISI_Social_Game implements EntryPoint, MouseDownHandler {
 	public Label lastCoords;
 	boolean imagesLoaded=false;
 	EventLog log;
+	
+	World w;
 	
 	
 	private static class ValueDialog extends DialogBox{
@@ -146,7 +152,7 @@ public class ISI_Social_Game implements EntryPoint, MouseDownHandler {
 		contextBuff = canvasBuff.getContext2d();
 		loadImages();
 		
-		
+		//w = new World();
 		
 		lastCoords = new Label("nothing");
 		RootPanel.get("coords").add(lastCoords);

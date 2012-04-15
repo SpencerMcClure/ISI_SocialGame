@@ -8,7 +8,7 @@ package isi.prototype.back;
  * @version 0.1
  */
 
-import java.io.*;
+
 import java.util.*;
 
 public class World
