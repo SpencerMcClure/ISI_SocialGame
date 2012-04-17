@@ -35,10 +35,6 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import isi.prototype.back.Jammer;
-import isi.prototype.back.Node;
-import isi.prototype.back.World;
-import isi.prototype.back.*;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
