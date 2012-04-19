@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Node()
+comment1.params=loc
+comment1.target=Node(Location)
+comment2.params=l
+comment2.target=boolean\ addLink(Link)
+comment3.params=n
+comment3.target=Link\ getLink(int)
+comment4.params=
+comment4.target=int\ getid()
+comment5.params=
+comment5.target=java.util.ArrayList\ getLinks()
+comment6.params=
+comment6.target=java.lang.String\ toString()
+comment6.text=\r\n\ @param\ \ y\ \ \ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ \ \ \ \ the\ sum\ of\ x\ and\ y\ \r\n
+numComments=7

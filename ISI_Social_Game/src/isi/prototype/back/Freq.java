@@ -1,4 +1,4 @@
-package isi.prototype.back;
+ 
 /**
  * Abstract class Freq - sed for Links and Jammers
  * 
@@ -11,7 +11,7 @@ public abstract class Freq
     
     public Freq()
     {
-        freq = (int) (Math.random() * World.MAX_FREQ);
+        this((int) (Math.random() * World.MAX_FREQ));
     }
     
     public Freq(int num)

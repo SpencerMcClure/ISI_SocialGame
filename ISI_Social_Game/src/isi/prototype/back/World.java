@@ -1,5 +1,5 @@
 
-package isi.prototype.back;
+ 
 /**
 
  * The World class

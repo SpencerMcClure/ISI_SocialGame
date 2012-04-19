@@ -1,4 +1,4 @@
-package isi.prototype.back;
+ 
 
 /**
  * The Game class

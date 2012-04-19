@@ -1,5 +1,5 @@
 
-package isi.prototype.back;
+ 
 /**
  * The Node class
  * 
@@ -15,13 +15,19 @@ public class Node
     private ArrayList<Link> links;
     private int id;
     private int numLinks;
+    private Location l;
 
     public Node()
     {
+        this(new Location(0,0));
+    }
+    
+    public Node(Location loc) {
         links = new ArrayList<Link>();
         id = nodeNum;
         nodeNum++;
         numLinks = 0;
+        l = loc;
     }
 
     public boolean addLink(Link l) {

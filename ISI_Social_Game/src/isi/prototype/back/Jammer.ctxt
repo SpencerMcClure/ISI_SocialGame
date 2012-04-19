@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=n
+comment0.target=Jammer(Node)
+comment1.params=num\ n
+comment1.target=Jammer(int,\ Node)
+comment2.params=num\ n\ loc
+comment2.target=Jammer(int,\ Node,\ Location)
+comment3.params=n
+comment3.target=boolean\ addNode(Node)
+comment4.params=
+comment4.target=Node\ getNode()
+comment5.params=
+comment5.target=double\ getBandwidth()
+comment6.params=
+comment6.target=java.lang.String\ toString()
+comment6.text=\r\n\ @param\ \ y\ \ \ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ \ \ \ \ the\ sum\ of\ x\ and\ y\ \r\n
+numComments=7
