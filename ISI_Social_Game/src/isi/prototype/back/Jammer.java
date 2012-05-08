@@ -19,17 +19,21 @@ public class Jammer extends Freq
 
     public Jammer(Node n)
     {
-        this((int) (Math.random() * World.MAX_FREQ), n, new Location(0,0));
-    }
-
-    public Jammer(int num, Node n) {
-        this(num, n, new Location(0,0));
+        this(n, new Location(0,0));
     }
     
-    public Jammer(int num, Node n, Location loc) {
-        super(num);
+    public Jammer(Node[] narr, Location loc) {
         nodes = new ArrayList<Node>();
-        bandwidth = 1;
+        for (Node n : narr) {
+            nodes.add(n);
+        }
+        bandwidth = World.MAX_WIDTH;
+        l = loc;
+    }
+    
+    public Jammer(Node n, Location loc) {
+        nodes = new ArrayList<Node>();
+        bandwidth = World.MAX_WIDTH;
         addNode(n);
         l = loc;
     }
@@ -47,6 +51,10 @@ public class Jammer extends Freq
     public Node getNode() {
         return nodes.get(0);
     }
+    
+    public Node getNode(int n) { return nodes.get(n); }
+    
+    public ArrayList<Node> getNodes() { return nodes; }
     
     public double getBandwidth() { return bandwidth; }
 

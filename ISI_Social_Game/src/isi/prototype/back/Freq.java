@@ -11,12 +11,7 @@ public abstract class Freq
     
     public Freq()
     {
-        this((int) (Math.random() * World.MAX_FREQ));
-    }
-    
-    public Freq(int num)
-    {
-        freq = num;
+        freq = ((int) (Math.random() * World.MAX_FREQ));
     }
     
     /**
@@ -30,6 +25,11 @@ public abstract class Freq
     }
     
     public double getFreq() {
+        return freq;
+    }
+    
+    public double rand() {
+        freq = (int) (Math.random() * World.MAX_FREQ);
         return freq;
     }
 

@@ -16,21 +16,6 @@ public class Link extends Freq
     private Node node1;
     private Node node2;
 
-    public Link(int num, Node n1, Node n2)
-    {
-        super(num);
-        if (n2.getid() < n1.getid()) {
-            node1 = n2;
-            node2 = n1;
-        } else if (n1.getid() < n2.getid()) {
-            node1 = n1;
-            node2 = n2;
-        } else {
-            throw new IllegalArgumentException();
-        }
-        blocked = false;
-    }
-
     public Link(Node n1, Node n2)
     {
         super();
@@ -41,7 +26,7 @@ public class Link extends Freq
             node1 = n1;
             node2 = n2;
         } else {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("You can't link a Node to itself!");
         }
         blocked = false;
     }

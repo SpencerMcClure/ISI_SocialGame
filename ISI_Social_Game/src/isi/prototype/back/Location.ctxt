@@ -5,4 +5,6 @@ comment1.params=
 comment1.target=double\ getX()
 comment2.params=
 comment2.target=double\ getY()
-numComments=3
+comment3.params=l
+comment3.target=double\ dist(Location)
+numComments=4
