@@ -64,6 +64,15 @@ public class Jammer extends Freq
      */
     public String toString()
     {
-        return "The jammer of " + getNode() + " has a frequency of " + getFreq();
+        String out = "The jammer of ";
+        for (Node n : nodes) {
+            if (nodes.size() <= 1) {
+                out += n;
+            } else {
+                out += n + ", ";
+            }
+        }
+        out += "has a frequency of " + getFreq();
+        return out;
     }
 }

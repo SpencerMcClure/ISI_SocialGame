@@ -62,6 +62,6 @@ public class Node
      */
     public String toString()
     {
-        return "node_id=" + id;
+        return "node" + id;
     }
 }

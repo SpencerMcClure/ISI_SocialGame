@@ -47,7 +47,7 @@ public class World
         numNodes++;
     }
 
-    public void addNodes(int num) {
+    private void addNodes(int num) {
         for (int i = 0; i < num; i++) {
             addNode();
         }
@@ -66,7 +66,13 @@ public class World
     }
 
     public boolean addLink(Node n1, Node n2) {
-        return addLink(new Link(n1, n2));
+        Link l = new Link(n1, n2);
+        if (addLink(l)) {
+            n1.addLink(l);
+            n2.addLink(l);
+            return true;
+        }
+        return false;
     }
 
     public boolean addLink(Link l) {
@@ -80,6 +86,8 @@ public class World
     }
 
     public ArrayList<Jammer> getJammmers() { return jammers; }
+
+    // Sets up a link between every single node
     private void setUpLinks() {
         for (Node n : nodes) {
             for (Node n2 : nodes) {

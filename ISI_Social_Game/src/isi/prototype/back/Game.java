@@ -54,6 +54,7 @@ public class Game
         jnodes[0] = n3; jnodes[1] = n4;
         Jammer j3 = new Jammer(jnodes, new Location(350,200));
         w.addJammer(j3);
+        w.adjustLinks();
         return w;
     }
 }
