@@ -1,4 +1,4 @@
-package isi.prototype.back;
+ 
 /**
 
  * The Jammer class
@@ -15,20 +15,27 @@ public class Jammer extends Freq
     private double radius;
     private double bandwidth;
     private ArrayList<Node> nodes;
+    private Location l;
 
     public Jammer(Node n)
     {
-        super();
-        bandwidth = 1;
-        nodes = new ArrayList<Node>();
-        addNode(n);
+        this(n, new Location(0,0));
     }
-
-    public Jammer(int num, Node n) {
-        super(num);
+    
+    public Jammer(Node[] narr, Location loc) {
         nodes = new ArrayList<Node>();
-        bandwidth = 1;
+        for (Node n : narr) {
+            nodes.add(n);
+        }
+        bandwidth = World.MAX_WIDTH;
+        l = loc;
+    }
+    
+    public Jammer(Node n, Location loc) {
+        nodes = new ArrayList<Node>();
+        bandwidth = World.MAX_WIDTH;
         addNode(n);
+        l = loc;
     }
 
     public boolean addNode(Node n) {
@@ -45,6 +52,10 @@ public class Jammer extends Freq
         return nodes.get(0);
     }
     
+    public Node getNode(int n) { return nodes.get(n); }
+    
+    public ArrayList<Node> getNodes() { return nodes; }
+    
     public double getBandwidth() { return bandwidth; }
 
     /**
@@ -53,6 +64,15 @@ public class Jammer extends Freq
      */
     public String toString()
     {
-        return "The jammer of " + getNode() + " has a frequency of " + getFreq();
+        String out = "The jammer of ";
+        for (Node n : nodes) {
+            if (nodes.size() <= 1) {
+                out += n;
+            } else {
+                out += n + ", ";
+            }
+        }
+        out += "has a frequency of " + getFreq();
+        return out;
     }
 }

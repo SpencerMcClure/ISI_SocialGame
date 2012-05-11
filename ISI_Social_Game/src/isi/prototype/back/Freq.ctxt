@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Freq()
+comment1.params=num
+comment1.target=double\ setFreq(int)
+comment1.text=\r\n\ @param\ \ num\ \ \ the\ number\ you\ want\ to\ change\ the\ link's\ frequency\ to.\r\n\ @return\ \ \ \ \ \ \ what\ the\ frequency\ has\ now\ been\ set\ as.\ \r\n
+comment2.params=
+comment2.target=double\ getFreq()
+comment3.params=
+comment3.target=double\ rand()
+numComments=4

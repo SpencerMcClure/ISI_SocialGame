@@ -1,5 +1,3 @@
-
-package isi.prototype.back;
 /**
 
  * The World class
@@ -7,8 +5,6 @@ package isi.prototype.back;
  * @author Aaron Harris
  * @version 0.1
  */
-
-
 import java.util.*;
 
 public class World
@@ -17,14 +13,17 @@ public class World
     private ArrayList<Node> nodes;
     private ArrayList<Link> links;
     private ArrayList<Jammer> jammers;
+    private Location size;
     public static final double MAX_FREQ = 10;
+    public static final double MAX_WIDTH = 1;
 
-    public World()
+    public World(Location l)
     {
         nodes = new ArrayList<Node>();
         links = new ArrayList<Link>();
         jammers = new ArrayList<Jammer>();
         numNodes = 0;
+        size = l;
     }
 
     public World(int num) {
@@ -32,7 +31,7 @@ public class World
         links = new ArrayList<Link>();
         jammers = new ArrayList<Jammer>();
         numNodes = 0;
-        addNode(num);
+        addNodes(num);
         setUpLinks();
         addJammers();
         adjustLinks();
@@ -48,10 +47,32 @@ public class World
         numNodes++;
     }
 
+    private void addNodes(int num) {
+        for (int i = 0; i < num; i++) {
+            addNode();
+        }
+    }
+
+    public Node getNode(int n) { return nodes.get(n); }
+
+    public void addJammer(Jammer j) {
+        jammers.add(j);
+    }
+
     public void addJammers() {
         for (Node n : nodes) {
             jammers.add(new Jammer(n));
         }
+    }
+
+    public boolean addLink(Node n1, Node n2) {
+        Link l = new Link(n1, n2);
+        if (addLink(l)) {
+            n1.addLink(l);
+            n2.addLink(l);
+            return true;
+        }
+        return false;
     }
 
     public boolean addLink(Link l) {
@@ -64,16 +85,9 @@ public class World
         return true;
     }
 
-    public void addNode(int num) {
-        for (int i = 0; i < num; i++) {
-            addNode();
-        }
-    }
-
-    public Node getNode(int n) { return nodes.get(n); }
-
     public ArrayList<Jammer> getJammmers() { return jammers; }
 
+    // Sets up a link between every single node
     private void setUpLinks() {
         for (Node n : nodes) {
             for (Node n2 : nodes) {
@@ -117,7 +131,7 @@ public class World
     }
 
     // This method checks whether any of the jammers is blocking a link and adjusts the link's "blocked" setting, if necessary
-    public void adjustLinks() {
+    public void adjustLinks2() {
         unblockAllLinks();
         for (Jammer j : jammers) {
             for (Link l : j.getNode().getLinks()) {
@@ -129,9 +143,23 @@ public class World
         }
     }
 
+    public void adjustLinks() {
+        unblockAllLinks();
+        for (Jammer j : jammers) {
+            for (Node n : j.getNodes()) {
+                for (Link l : n.getLinks()) {
+                    double diff = Math.abs(j.getFreq() - l.getFreq());
+                    if (diff <= j.getBandwidth()) {
+                        l.block();
+                    }
+                }
+            }
+        }
+    }
+
     public void changeLink(int i, int freq) {
         links.get(i).setFreq(freq);
-        adjustLinks();
+        adjustLinks2();
     }
 
     public void changeJammer(int i, int freq) {
