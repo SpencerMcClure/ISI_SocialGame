@@ -1,3 +1,6 @@
+package isi.prototype.back;
+
+
 public class Location
 {
 

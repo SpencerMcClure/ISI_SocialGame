@@ -1,4 +1,5 @@
- 
+package isi.prototype.back;
+
 
 /**
  * The Link class

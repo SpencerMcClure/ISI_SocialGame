@@ -1,9 +1,4 @@
-/**
- * The Game class
- * 
- * @author Aaron Harris
- * @version 0.1
- */
+package isi.prototype.back;
 
 import java.util.*;
 import java.io.*;

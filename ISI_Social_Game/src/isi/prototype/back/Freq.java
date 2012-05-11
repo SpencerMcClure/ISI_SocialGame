@@ -1,4 +1,4 @@
- 
+package isi.prototype.back;
 /**
  * Abstract class Freq - sed for Links and Jammers
  * 
