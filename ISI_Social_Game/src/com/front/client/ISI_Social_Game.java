@@ -28,6 +28,7 @@ import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Image;
@@ -35,6 +36,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.Widget;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -67,9 +69,11 @@ public class ISI_Social_Game implements EntryPoint, MouseDownHandler {
 	public Context2d contextBuff;
 	public Canvas canvas;
 	public Canvas canvasBuff;
+	public Button sqlButt;
 	FrontNode test;
 	public Label lastCoords;
 	boolean imagesLoaded=false;
+	private GameServiceAsync gameSvc = GWT.create(GameService.class);
 	EventLog log;
 	
 	World w;
@@ -80,6 +84,7 @@ public class ISI_Social_Game implements EntryPoint, MouseDownHandler {
 		FrontConnection c;
 		FrontJammer j;
 		TextBox t;
+		
 		public ValueDialog(GameObject gameobj) {
 			if(gameobj.type==Class.CONNECTION)
 			{
@@ -154,6 +159,34 @@ public class ISI_Social_Game implements EntryPoint, MouseDownHandler {
 		RootPanel.get("coords").add(lastCoords);
 		log = new EventLog(RootPanel.get("output"));
 		setUpNodes();
+		sqlButt = new Button("newGame!", new ClickHandler() {
+
+			public void onClick(ClickEvent event) {
+				if(gameSvc==null) {
+					gameSvc = GWT.create(GameService.class);
+				}
+				
+				AsyncCallback<Boolean> callback = new AsyncCallback<Boolean>() {
+
+					public void onFailure(Throwable caught) {
+						// TODO Auto-generated method stub
+						System.out.println("");
+					}
+
+					public void onSuccess(Boolean result) {
+						if(result==true) {
+							sqlButt.setVisible(false);
+						}
+						
+					}
+					
+				};
+				
+				gameSvc.createGame(callback);
+				
+			}
+		});
+		RootPanel.get("addGameButton").add(sqlButt);
 		
 		final Timer timer = new Timer() {
 			public void run() {

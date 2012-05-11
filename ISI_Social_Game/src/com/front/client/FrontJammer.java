@@ -14,7 +14,11 @@ public class FrontJammer extends GameObject{
 	static ImageElement img;
 	static int width, height;
 	private int radius;
+	private int frequency=20;
+	
 	final double PI = 3.14159265;
+	
+	
 	
 	
 	//FrontJammer.JammerImage img = new JammerImage();
@@ -58,8 +62,12 @@ public class FrontJammer extends GameObject{
 		c.arc(0, 0, radius, 2*PI, 0);
 		c.closePath();
 		c.stroke();
+		
 		c.fill();
 		c.drawImage(img, -FrontJammer.width/2, -FrontJammer.height/2);
+		c.setFillStyle("#000000");
+		c.setFont("bold 16px sans-serif");
+		c.fillText(String.valueOf(frequency) , -8,5);
 		c.translate(-loc.x, -loc.y);
 		
 	}
